@@ -2,6 +2,8 @@
 
 * {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -23,12 +25,27 @@ h1, p {
   margin-bottom: 1.5rem;
 }
 
+p {
+  color: #8A919C;
+  line-height: 1.5;
+}
+
 .card {
   padding: 1.5rem;
+  max-width: 25rem;
   background-color: #1c232d;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#232832), to(#171E28));
   border-radius: 1rem;
+  transition: all .4s ease-in-out;
 }
+  .card.flip {
+    animation: flip .4s ease-in;
+  }
+  @keyframes flip {
+    0% { transform:rotateY(0deg) }
+    50% { transform:rotateY(90deg) }
+    100% { transform:rotateY(0deg) }
+  }
 
 .ratingForm img {
   margin-bottom: 1.5rem;
@@ -37,18 +54,97 @@ h1, p {
   border-radius: 50%;
 }
 
-.error {
-  display: none;
-  background: red;
+.ratingGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
 }
+
+.radioButton {
+  position: absolute;
+  visibility: hidden;
+}
+  label {
+    display: inline-block;
+    width: 3.5rem;
+
+    color: #8A919C;
+    text-align: center;
+    line-height: 3.5rem;
+
+    background: #252E37;
+    border-radius: 50%;
+    transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  label:hover{
+    color: white;
+    background: #8A919C;
+  }
+  .radioButton:checked ~ label {
+    background-color: #FC7613;
+    color: #FFF1C5;
+  }
+
+button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+ 
+  color: #FFF1C5;
+  text-transform: uppercase;
+  letter-spacing: .25rem;
+
+  border: none;
+  border-radius: 50rem;
+  background-color: #FC7613;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+  button:hover {
+    color: #FC7613;
+    background: white;
+  }
 
 .thanks {
   display: none;
+  text-align: center;
+}
+
+.thanks img {
+  display: block;
+  margin: auto;
+  margin: 1rem auto 2rem;
+}
+
+.thanks h1 {
+  margin-bottom: 1rem;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  margin-bottom: 2rem;
+  
+  color: #FC7613;
+  line-height: 1.5rem;
+
+  background-color: #252E37;
+  border-radius: 50rem;
 }
 
 .attribution {
   position: fixed;
   bottom: 0;
   left: 50%;
+  padding: 0.5rem;
   transform: translateX(-50%);
+  color: #252e37;
+  font-size: .75rem;
 }
+  .attribution a {
+    color: #252e37;
+  }
+  .attribution a:hover {
+    color: #8A919C;
+  }

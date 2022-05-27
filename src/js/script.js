@@ -1,3 +1,4 @@
+const card = document.querySelector('.card')
 const ratingForm = document.querySelector('.ratingForm')
 const thanksState = document.querySelector('.thanks')
 const resultWrap = document.querySelector('.result')
@@ -11,11 +12,12 @@ function ratingFeedback () {
   for (let el of radios) {
     if (el.checked) {
       resultWrap.innerText = el.value
-    } else {
-      errorMessage.style.display = "block"
     }
   }
 
-  ratingForm.style.display = 'none'
-  thanksState.style.display = 'block'
+  card.classList.add('flip')
+  setTimeout(() => {
+    ratingForm.style.display = 'none'
+    thanksState.style.display = 'block'
+  }, 400)
 }
